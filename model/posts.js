@@ -9,6 +9,11 @@ module.exports ={
 
     newPost(title, description){
         this.posts.push({id: generateID(), title, description});
+        
+    },
+
+    delPost(id){
+        this.posts.splice(id, 1);
     }
 }
 

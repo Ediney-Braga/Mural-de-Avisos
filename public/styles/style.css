@@ -47,6 +47,13 @@ button{
     letter-spacing: 2px;
     font-weight: bold;
     position: absolute;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+#salvar{
     bottom: 0px;
     right: -70px
 }
@@ -59,7 +66,8 @@ h2{
 .card{
     min-width: 600px;
     max-width: 900px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    position: relative;
 }
 
 .card-header{
@@ -69,6 +77,18 @@ h2{
 
 .card-body{
     padding: 20px;
-    margin-bottom: 10px;
     background-color: rgb(240, 239, 239);
 }
+
+#delete{
+    color: red;
+    position: absolute;
+    right: 0px;
+    bottom: -7px;
+    height: 30px;
+    width: 60px;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+}
+

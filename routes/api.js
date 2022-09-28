@@ -1,4 +1,3 @@
-
 const express = require("express");
 const posts = require("../model/posts");
 const router = express.Router();
@@ -21,11 +20,16 @@ router.get("/all", (req, res) => {
 })
 
 router.post("/new", (req, res) => {
-   
     let title = req.body.title;
     let description =req.body.description;
     posts.newPost(title, description);
     res.send("Post adicionado");
+})
+
+router.delete("/del", (req, res) => {
+    let id = req.body.id;
+    posts.delPost(id);
+    res.send("Aviso deletdo");
 })
 
 module.exports = router;

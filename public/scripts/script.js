@@ -12,11 +12,13 @@ function updatePosts(){
         let posts = JSON.parse(json);
                 
         posts.forEach((post) => {
-            let postElement = `<div id=${post.id} class="card"><div class="card-header"><h3 class="card-title">${post.title}</h3></div><div class="card-body"><div class="card-text">${post.description}</div></div></div>`
+            let postElement = `<div id=${post.id} class="card"><div class="card-header"><h3 class="card-title">${post.title}</h3></div><div class="card-body"><div class="card-text"><p>${post.description}</p></div></div><button id="delete">Delete</button>
+            </div>`
             postElements += postElement;
         })
        
         document.querySelector("#posts").innerHTML = postElements;
+        deteleAviso();
     })
 }
 
@@ -43,5 +45,30 @@ function newdPost(){
         document.querySelector("#desc").value = "";
     })
 
-    console.log(options)
+}
+
+
+function deteleAviso () {
+    let buttonsDel = document.querySelectorAll("#delete");
+
+    buttonsDel.forEach(buttonDel => {
+        buttonDel.addEventListener("click", (event) => {
+            let element = event.target;
+            let delElementId = element.parentNode.id;
+            let id = {"id":delElementId}
+
+
+            const options = {
+                method: "DELETE",
+                headers: new Headers({"content-type": "application/json"}),
+                body: JSON.stringify(id)
+            }
+            
+            fetch("http://10.0.0.107:3000/api/del", options).then((res) => {
+                updatePosts();
+            })
+        })
+        
+    });
+
 }
